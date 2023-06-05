@@ -1,0 +1,127 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+#****************************************RAISE_COMPLAINT****************************************************
+- intent: raise_complaint
+  examples: |
+    - i'd like to like to raise a complaint
+    - complaint
+    - complaint raise
+    - complaints
+    - raise complaint
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+- intent: track_complaint
+  examples: |
+    - i'd like to like to track a complaint
+    - track complaint
+    - complaint tracking
+    - complaint track
+    - track acomplaint
+#****************************************TRACK COMPLAINT******************************************************
+
+- intent: inform
+  examples: |
+    - [Amudhesh](r_username)
+    - [Karthick](r_username)
+    - [amudhesh@outlook.com](r_email)
+    - [karthick@gmail.com](r_email)
+    - [chennai](r_location)
+    - [delhi](r_location)
+    - [Slow network speed and hardware not working](r_complaint_details)
+    - [Hardware component failure](r_complaint_details)
+    - [No attachments](r_attachments)
+    - [none](r_attachments)
+    - [12345aByte](t_complaint_number)
+    - [Abytw23891](t_complaint_number)
+    - [Please follow the complaint](t_comments)
+    - [Please fasten the process](t_comments)

@@ -1,0 +1,202 @@
+version: "3.1"
+
+intents:
+#****************************************DEFAULT************************************************************
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - inform
+#****************************************DEFAULT************************************************************
+
+#****************************************RAISE_COMPLAINT****************************************************
+  - raise_complaint
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+  - track_complaint
+#****************************************TRACK COMPLAINT******************************************************
+
+entities:
+#****************************************RAISE_COMPLAINT****************************************************
+  - r_username:
+      type: regex
+      pattern: "^[a-zA-Z0-9_-]{5,25}$"
+  - r_email:
+      type: regex
+      pattern: "[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+"
+  - r_location:
+      type: text
+      pattern: "^[a-zA-Z0-9_-]{5,25}$"
+  - r_complaint_details:
+      type: regex
+      pattern: "^[a-zA-Z0-9_-]{5,100}$"
+  - r_attachments:
+      type: text
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+  - t_complaint_number:
+      type: regex
+      pattern: "[A-Za-z0-9]{10}"
+  - t_comments:
+      type: regex
+      pattern: "^[a-zA-Z0-9_-]{5,100}$"
+#****************************************TRACK COMPLAINT******************************************************
+
+slots:
+#****************************************RAISE_COMPLAINT****************************************************
+  r_username:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: r_username
+  r_email:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: r_email
+  r_location:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: r_location
+  r_complaint_details:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: r_complaint_details
+  r_attachments:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: r_attachments
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+  t_complaint_number:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: t_complaint_number
+  t_comments:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: t_comments
+#****************************************TRACK COMPLAINT******************************************************
+
+
+forms:
+#****************************************RAISE_COMPLAINT****************************************************
+  raise_complaint_form:
+    required_slots:
+      - r_username
+      - r_email
+      - r_location
+      - r_complaint_details
+      - r_attachments
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+  track_complaint_form:
+    required_slots:
+      - t_complaint_number
+      - t_comments
+#****************************************TRACK COMPLAINT******************************************************
+
+responses:
+#****************************************DEFAULT************************************************************
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_submit:
+  - text: I will raise a complain for you!
+
+  utter_complaint_slots:
+  - text: The slots are {r_username} {r_email} {r_location} {r_complaint_details} {r_attachments}.
+
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form?
+#****************************************DEFAULT************************************************************
+
+#****************************************RAISE_COMPLAINT****************************************************
+  utter_ask_r_username:
+  - text: Tell me your username?
+
+  utter_ask_r_email:
+  - text: tell me your email?
+
+  utter_ask_r_location:
+  - text: tell me your location?
+
+  utter_ask_r_complaint_details:
+  - text: tell me complaint details
+
+  utter_ask_r_attachments:
+  - text: give any attachment
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+  utter_ask_t_complaint_number:
+  - text: Give your complaint number to track
+
+  utter_ask_t_comments:
+  - text: Enter comments if any
+
+  utter_track_submit:
+  - text:  Thanks for the comments
+
+  utter_track_complaint_slots:
+  - text: The track complaint slots are {t_complaint_number} {t_comments}
+#****************************************TRACK COMPLAINT******************************************************
+
+actions:
+#****************************************DEFAULT************************************************************
+- utter_ask_continue
+- utter_goodbye
+- utter_greet
+#****************************************DEFAULT************************************************************
+
+#****************************************RAISE_COMPLAINT****************************************************
+- utter_complaint_slots
+- utter_submit
+- validate_raise_complaint_form
+#****************************************RAISE_COMPLAINT****************************************************
+
+#****************************************TRACK COMPLAINT******************************************************
+- utter_track_complaint_form
+- utter_track_complaint_slot
+- utter_track_submit
+- validate_track_complaint_form
+#****************************************TRACK COMPLAINT******************************************************
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
