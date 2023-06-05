@@ -106,9 +106,17 @@ nlu:
     - track complaint
     - complaint tracking
     - complaint track
-    - track acomplaint
+    - track a complaint
 #****************************************TRACK COMPLAINT******************************************************
 
+#****************************************SUGGESTIONS**********************************************************
+- intent: suggestion
+  examples: |
+    - suggesstion form
+    - suggestion
+    - suggest
+    - give a suggestion
+#****************************************SUGGESTIONS**********************************************************
 - intent: inform
   examples: |
     - [Amudhesh](r_username)
@@ -125,3 +133,13 @@ nlu:
     - [Abytw23891](t_complaint_number)
     - [Please follow the complaint](t_comments)
     - [Please fasten the process](t_comments)
+    - [subhasri](s_username)
+    - [venkatesan](s_username)
+    - [subhasri@outlook.com](s_email)
+    - [venkatesan@gmail.com](s_email)
+    - [chennai](s_location)
+    - [delhi](s_location)
+    - [Increase the process speed](s_complaint_details)
+    - [Maintain clean environment](s_complaint_details)
+    - [No attachments](s_attachments)
+    - [none](s_attachments)

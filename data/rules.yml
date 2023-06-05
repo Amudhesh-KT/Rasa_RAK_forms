@@ -1,7 +1,7 @@
 version: "3.1"
 
 rules:
-
+#****************************************DEFAULT************************************************************
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -11,6 +11,8 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+#****************************************DEFAULT************************************************************
+
 #****************************************RAISE_COMPLAINT****************************************************
 - rule: Activate Complaint Form
   steps:
@@ -48,3 +50,22 @@ rules:
   - action: utter_track_submit
   - action: utter_track_complaint_slots
 #****************************************TRACK COMPLAINT******************************************************
+
+#****************************************SUGGESTIONS**********************************************************
+- rule: Activate Suggestion Form
+  steps:
+  - intent: suggestion
+  - action: suggestion_form
+  - active_loop: suggestion_form
+
+- rule: Submit Suggestion Form
+  condition:
+  - active_loop: suggestion_form
+  steps:
+  - action: suggestion_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_suggestion_submit
+  - action: utter_suggestion_slots
+#****************************************SUGGESTIONS**********************************************************

@@ -27,7 +27,7 @@ from rasa_sdk.types import DomainDict
 #         dispatcher.utter_message(text="Hello World!")
 
 #         return []
-
+#****************************************RAISE_COMPLAINT****************************************************
 class ValidateComplaintForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_raise_complaint_form"
@@ -97,7 +97,9 @@ class ValidateComplaintForm(FormValidationAction):
  
         dispatcher.utter_message(text=f"Your attachments is {slot_value}.")
         return {"r_attachments": slot_value}
-    
+#****************************************RAISE_COMPLAINT****************************************************    
+
+#****************************************TRACK COMPLAINT******************************************************   
 class ValidateTrackComplaintForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_track_complaint_form"
@@ -127,5 +129,76 @@ class ValidateTrackComplaintForm(FormValidationAction):
  
         dispatcher.utter_message(text=f"Your comment is {slot_value}.")
         return {"t_comments": slot_value}
+#****************************************TRACK COMPLAINT******************************************************
 
+#****************************************SUGGESTIONS**********************************************************
+class ValidateSuggestionForm(FormValidationAction):
+    def name(self) -> Text:
+        return "validate_suggesstion_form"
 
+    def validate_s_username(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+    
+
+ 
+        dispatcher.utter_message(text=f"Your user name is {slot_value}.")
+        return {"s_username": slot_value}
+    
+    def validate_s_email(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+    
+
+ 
+        dispatcher.utter_message(text=f"Your email is {slot_value}.")
+        return {"s_email": slot_value}
+    
+
+    def validate_s_location(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+    
+
+ 
+        dispatcher.utter_message(text=f"Your location is {slot_value}.")
+        return {"s_location": slot_value}
+
+    def validate_s_complaint_details(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+    
+
+ 
+        dispatcher.utter_message(text=f"Your complaint details is {slot_value}.")
+        return {"s_complaint_details": slot_value}
+    
+    def validate_s_attachments(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+    
+
+ 
+        dispatcher.utter_message(text=f"Your attachments is {slot_value}.")
+        return {"s_attachments": slot_value}
+#****************************************SUGGESTIONS**********************************************************
