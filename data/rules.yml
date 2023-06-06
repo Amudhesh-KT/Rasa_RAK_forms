@@ -30,6 +30,7 @@ rules:
     - requested_slot: null
   - action: utter_submit
   - action: utter_complaint_slots
+  - action: action_clear_complaint_slots
 #****************************************RAISE_COMPLAINT****************************************************
 
 #****************************************TRACK COMPLAINT******************************************************
